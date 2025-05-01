@@ -10,38 +10,34 @@ class NavigationService {
   Future<dynamic> pushNamed(
     String routeName, {
     Map<String, dynamic> arguments = const <String, dynamic>{},
-  }) =>
-      navigatorKey.currentState!.pushNamed(routeName, arguments: arguments);
+  }) => navigatorKey.currentState!.pushNamed(routeName, arguments: arguments);
 
   Future<dynamic> pushReplacement(
     String routeName, {
     Map<String, dynamic> arguments = const <String, dynamic>{},
-  }) =>
-      navigatorKey.currentState!.pushReplacementNamed(
-        routeName,
-        arguments: arguments,
-      );
+  }) => navigatorKey.currentState!.pushReplacementNamed(
+    routeName,
+    arguments: arguments,
+  );
 
   Future<dynamic> removeAllAndPush(
     String routeName, {
     Map<String, dynamic> arguments = const <String, dynamic>{},
-  }) =>
-      navigatorKey.currentState!.pushNamedAndRemoveUntil(
-        routeName,
-        (Route<dynamic> route) => false,
-        arguments: arguments,
-      );
+  }) => navigatorKey.currentState!.pushNamedAndRemoveUntil(
+    routeName,
+    (Route<dynamic> route) => false,
+    arguments: arguments,
+  );
 
   Future<dynamic> removeUntilAndPush(
     String routeName,
     String untilRoute, {
     Map<String, dynamic> arguments = const <String, dynamic>{},
-  }) =>
-      navigatorKey.currentState!.pushNamedAndRemoveUntil(
-        routeName,
-        (Route<dynamic> route) => route.settings.name == untilRoute,
-        arguments: arguments,
-      );
+  }) => navigatorKey.currentState!.pushNamedAndRemoveUntil(
+    routeName,
+    (Route<dynamic> route) => route.settings.name == untilRoute,
+    arguments: arguments,
+  );
 
   Future<dynamic> popUntil(
     String routeName, {

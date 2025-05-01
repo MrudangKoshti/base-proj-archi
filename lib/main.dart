@@ -12,7 +12,6 @@ import 'core/routing/routing.dart';
 import 'core/utils/theme_service.dart';
 import 'di/locator.dart' as di;
 
-
 Future<String?> _getId() async {
   var deviceInfo = DeviceInfoPlugin();
   if (Platform.isIOS) {
@@ -40,19 +39,20 @@ Future<String?> _getDeviceOSVersion() async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light));
- 
+      statusBarBrightness: Brightness.light,
+    ),
+  );
 
   await di.init();
   FlutterNativeSplash.remove();
-
 
   runApp(
     // DevicePreview(
@@ -68,27 +68,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-   
-    return Sizer(builder: (context, orientation, deviceType) {
-      return GetMaterialApp(
-        title: 'Clean Architecture',
-        theme: ThemeService.lightTheme,
-        themeMode: ThemeMode.light,
-        darkTheme: ThemeService.darkTheme,
-        navigatorKey: di.locator<NavigationService>().navigatorKey,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: (RouteSettings routeSettings) => generateRoute(
-            routeSettings,
-           
-            navigationService: di.locator<NavigationService>()),
-        builder: (BuildContext ctx, Widget? widget) =>
-        
-           MediaQuery(
-            data: MediaQuery.of(ctx).copyWith(textScaleFactor: 1.0),
-            child: widget!,
-          ),
-        
-      );
-    });
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return GetMaterialApp(
+          title: 'Clean Architecture',
+          theme: ThemeService.lightTheme,
+          themeMode: ThemeMode.light,
+          darkTheme: ThemeService.darkTheme,
+          navigatorKey: di.locator<NavigationService>().navigatorKey,
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute:
+              (RouteSettings routeSettings) => generateRoute(
+                routeSettings,
+                navigationService: di.locator<NavigationService>(),
+              ),
+          builder:
+              (BuildContext ctx, Widget? widget) => MediaQuery(
+                data: MediaQuery.of(ctx).copyWith(textScaleFactor: 1.0),
+                child: widget!,
+              ),
+        );
+      },
+    );
   }
 }

@@ -7,12 +7,12 @@ class CustomFadeRoute extends PageTransition {
     required String routeName,
     bool isFromBottom = false,
   }) : super(
-          child: child,
-          type: PageTransitionType.fade,
-          duration: const Duration(milliseconds: 400),
-          reverseDuration: const Duration(milliseconds: 300),
-          settings: RouteSettings(name: routeName),
-          fullscreenDialog: false,
-          curve: Curves.linearToEaseOut,
-        );
+         child: child,
+         type: PageTransitionType.fade,
+         duration: const Duration(milliseconds: 400),
+         reverseDuration: const Duration(milliseconds: 300),
+         settings: RouteSettings(name: routeName),
+         fullscreenDialog: false,
+         curve: Curves.linearToEaseOut,
+       );
 }

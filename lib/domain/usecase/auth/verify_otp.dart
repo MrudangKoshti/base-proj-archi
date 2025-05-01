@@ -5,8 +5,6 @@ import '../../../core/usecases/usecases.dart';
 import '../../../data/model/user_model.dart';
 import '../../repositories/auth_repository.dart';
 
-
-
 class VerifyOtp extends UseCase<User?, Params> {
   final AuthRepository authRepository;
 
@@ -15,6 +13,7 @@ class VerifyOtp extends UseCase<User?, Params> {
   @override
   Future<Either<Failure, User?>> call(Params params) =>
       authRepository.verifyOtp(
-          mobileNumber: params.authParams!.mobileNumber!,
-          otp: params.authParams!.otp!);
+        mobileNumber: params.authParams!.mobileNumber!,
+        otp: params.authParams!.otp!,
+      );
 }
