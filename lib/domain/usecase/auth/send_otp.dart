@@ -4,8 +4,6 @@ import '../../../core/error/failures.dart';
 import '../../../core/usecases/usecases.dart';
 import '../../repositories/auth_repository.dart';
 
-
-
 class SendOtp extends UseCase<bool, Params> {
   final AuthRepository repository;
 
@@ -13,6 +11,7 @@ class SendOtp extends UseCase<bool, Params> {
 
   @override
   Future<Either<Failure, bool>> call(Params params) => repository.sendOtp(
-      mobileNumber: params.authParams!.mobileNumber!,
-      appSignature: params.authParams!.appSignature!);
+    mobileNumber: params.authParams!.mobileNumber!,
+    appSignature: params.authParams!.appSignature!,
+  );
 }

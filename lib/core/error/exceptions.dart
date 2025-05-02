@@ -1,7 +1,3 @@
-
-
-
-
 import '../utils/constants.dart';
 
 class ServerException implements Exception {
@@ -21,7 +17,7 @@ class AuthException implements Exception {
   final int code;
 
   const AuthException({
-    this.message = ExcaptionConst.somethingUnexpectedHappened,
+    this.message = ExceptionConst.somethingUnexpectedHappened,
     this.code = -1,
   });
 }
@@ -30,7 +26,7 @@ class CacheException implements Exception {
   final String message;
 
   const CacheException({
-    this.message = ExcaptionConst.somethingUnexpectedHappened,
+    this.message = ExceptionConst.somethingUnexpectedHappened,
   });
 }
 
@@ -38,12 +34,12 @@ class DeviceException implements Exception {
   final String message;
 
   const DeviceException({
-    this.message = ExcaptionConst.somethingUnexpectedHappened,
+    this.message = ExceptionConst.somethingUnexpectedHappened,
   });
 }
 
 // Some common exceptions
 const ServerException somethingWentWrong = ServerException(
-  message: ExcaptionConst.somethingWentWrong,
-  exception: ExcaptionConst.internalServerError,
+  message: ExceptionConst.somethingWentWrong,
+  exception: ExceptionConst.internalServerError,
 );
