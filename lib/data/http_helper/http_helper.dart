@@ -51,21 +51,15 @@ class HttpClient implements HttpClientInterface {
   Map<String, String> _customHeaders = {};
   void Function()? _onUnauthorized;
 
-  HttpClient({
-    String? baseUrl,
-    Duration connectTimeout = const Duration(seconds: 30),
-    Duration receiveTimeout = const Duration(seconds: 30),
-  }) : _dio = Dio(
-         BaseOptions(
-           baseUrl: baseUrl ?? Env.apiBaseUrl,
-           connectTimeout: connectTimeout,
-           receiveTimeout: receiveTimeout,
-           headers: {
-             'Content-Type': 'application/json',
-             'Accept': 'application/json',
-           },
-         ),
-       ) {
+  HttpClient(this._dio) {
+    _dio.options.baseUrl = Env.apiBaseUrl;
+    _dio.options.connectTimeout = const Duration(seconds: 30);
+    _dio.options.receiveTimeout = const Duration(seconds: 30);
+    _dio.options.headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+
     // Add interceptors
     _dio.interceptors.add(
       InterceptorsWrapper(

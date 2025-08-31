@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import '../../../core/error/exceptions.dart' as exceptions;
-import '../../../core/utils/constants.dart';
-import '../../../core/utils/utility.dart';
-import '../../datasource/remote/auth_remote_datasource.dart';
-import '../../http_helper/http_helper.dart';
-import '../../model/user_model.dart';
-import '../http/api_endpoints.dart';
+import 'package:base_project/core/error/exceptions.dart' as exceptions;
+import 'package:base_project/core/utils/constants.dart';
+import 'package:base_project/core/utils/utility.dart';
+import 'package:base_project/data/datasource/remote/auth_remote_datasource.dart';
+import 'package:base_project/data/http_helper/http_helper.dart';
+import 'package:base_project/data/model/user_model.dart';
+import 'package:base_project/data/datasource_impl/http/api_endpoints.dart';
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  final HttpClient httpClient;
+  final HttpClientInterface httpClient;
   AuthRemoteDataSourceImpl({required this.httpClient});
 
   @override
@@ -88,3 +88,4 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     return null;
   }
 }
+
